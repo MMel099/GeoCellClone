@@ -1,1 +1,1 @@
-# GeoCellClone
+# GeoCell
