@@ -6,7 +6,7 @@ import streamlit as st
 # ========================================================================
 # @Discripiton: GeoCells
 # streamlit run streamlit_app.py from the terminal at ANACONDA
-# publish:https://cwanlab-geocell-streamlit-app-vuwi9l.streamlit.app/
+# publish: https://geocellclone.streamlit.app/
 # @authors: Melnikas, Max; Nkambule, Lethukuthula; Wan, Guihong
 # @date: Oct 12, 2024
 # ========================================================================
@@ -173,7 +173,7 @@ cluster_chart = alt.Chart(combined_df).mark_circle(size=30, opacity=0.7).encode(
 phenotype_chart = alt.Chart(combined_df).mark_bar().encode(
     x=alt.X('phenotype:N', title='Phenotype', sort = '-y'),
     y=alt.Y('count():Q', title='Count'),
-    #color='phenotype:N',
+    color='cluster:N',
     tooltip=['phenotype', 'count()']
 ).properties(
     width=500,
@@ -186,9 +186,11 @@ phenotype_chart = alt.Chart(combined_df).mark_bar().encode(
 )
 
 
-full_chart = alt.hconcat(cluster_ratio_highlight, cluster_chart, phenotype_chart).resolve_scale(
+full_chart = (cluster_ratio_highlight & phenotype_chart) | cluster_chart
+full_chart = full_chart.resolve_scale(
     color='independent'
 )
+
 st.altair_chart(full_chart, use_container_width=True)
 st.divider()
 
