@@ -8,7 +8,7 @@ author:
 
 #### 1. Identify a dataset
 
-We identified a large genomic dataset of a melanoma tissue sample, containing spatially resolved, multiplexed imaging data at a single-cell resolution. The sample contained 1,110,585 individual cells with 17 unique phenotypes. Information on cell nuclei centroids was captured as (X,Y) coordinates; data on 30 antibody markers was also included. Below are two data summaries: on the left, a table that describes phenotype counts. On the right, an example of three cells with their (X,Y) coordinates.
+We identified a large spatially resolved, multiplexed immunofluorescence imaging data of a melanoma tissue sample at single-cell resolution. The sample contained 1,110,585 individual cells with 17 unique phenotypes. Information on cell nuclei centroids was captured as (X,Y) coordinates; data on 30 antibody markers was also included. Below are two data summaries: on the left, a table that describes phenotype counts. On the right, an example of three cells with their (X,Y) coordinates. The final figure depicts the process for gathering the data.
 
 <img src="figures/DataPhenotypes.png" alt="Phenotype Counts" width="200"/>
 <img src="figures/DataStructure.png" alt="Data Structure" width="400"/>
