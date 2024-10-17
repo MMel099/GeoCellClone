@@ -169,6 +169,26 @@ cluster_chart = alt.Chart(combined_df).mark_circle(size=30, opacity=0.7).encode(
     color=cluster_color_condition
 )
 
-combined_chart = alt.hconcat(cluster_ratio_highlight, cluster_chart)
-st.altair_chart(combined_chart, use_container_width=True)
+### Chart 3: Phenotype breakdown
+phenotype_chart = alt.Chart(combined_df).mark_bar().encode(
+    x=alt.X('phenotype:N', title='Phenotype', sort = '-y'),
+    y=alt.Y('count():Q', title='Count'),
+    #color='phenotype:N',
+    tooltip=['phenotype', 'count()']
+).properties(
+    width=500,
+    height=300,
+    title='Phenotype Distribution by Cluster'
+).transform_filter(
+    radio_select_cluster
+).transform_filter(
+    clustering_select
+)
+
+
+full_chart = alt.hconcat(cluster_ratio_highlight, cluster_chart, phenotype_chart).resolve_scale(
+    color='independent'
+)
+st.altair_chart(full_chart, use_container_width=True)
 st.divider()
+
